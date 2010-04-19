@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 
+#include "encryptjpeg.h"
+
 using namespace std;
 
 ifstream::pos_type size;

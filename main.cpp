@@ -23,6 +23,10 @@ int main() {
   }
   else cout << "Unable to open file" << endl;
   
+  // pass memblock somewhere.
+  // memblock[i];
+  
+  
   // write file out
   ofstream out_file("MARBLES.JPG.OUT", ios::out|ios::binary);
   if (out_file.is_open())
