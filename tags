@@ -1,0 +1,27 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ACCESSJPEG_H	accessjpeg.h	2;"	d
+AESENCRYPT_H	aesencrypt.h	2;"	d
+ENCRYPTJPEG_H	encryptjpeg.h	2;"	d
+accessJpeg	accessjpeg.h	/^class accessJpeg$/;"	c
+aesEncrypt	aesencrypt.h	/^class aesEncrypt$/;"	c
+decrypt	encryptjpeg.cpp	/^bool encryptJpeg::decrypt() {$/;"	f	class:encryptJpeg
+encrypt	encryptjpeg.cpp	/^bool encryptJpeg::encrypt() {$/;"	f	class:encryptJpeg
+encryptJpeg	encryptjpeg.h	/^class encryptJpeg$/;"	c
+file	encryptjpeg.h	/^	accessJpeg file;$/;"	m	class:encryptJpeg
+in_file	encryptjpeg.h	/^	char* in_file;$/;"	m	class:encryptJpeg
+invalidInFile	encryptjpeg.h	/^	class invalidInFile {};$/;"	c	class:encryptJpeg
+invalidOutFile	encryptjpeg.h	/^	class invalidOutFile {};$/;"	c	class:encryptJpeg
+main	main.cpp	/^int main()$/;"	f
+memblock	accessjpeg.h	/^	char * memblock;$/;"	m	class:accessJpeg
+out_file	encryptjpeg.h	/^	char* out_file;$/;"	m	class:encryptJpeg
+readInFile	accessjpeg.cpp	/^bool accessJpeg::readInFile(char* in)$/;"	f	class:accessJpeg
+setInFile	encryptjpeg.h	/^	void setInFile(char* in) {in_file = in;}$/;"	f	class:encryptJpeg
+setOutFile	encryptjpeg.h	/^	void setOutFile(char* out) {out_file = out;}$/;"	f	class:encryptJpeg
+size	accessjpeg.h	/^	ifstream::pos_type size;$/;"	m	class:accessJpeg
+writeOutFile	accessjpeg.cpp	/^bool accessJpeg::writeOutFile(char* out)$/;"	f	class:accessJpeg
+~accessJpeg	accessjpeg.cpp	/^accessJpeg::~accessJpeg()$/;"	f	class:accessJpeg
