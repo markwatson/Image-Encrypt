@@ -11,7 +11,7 @@ int main()
 	{
 		encryptJpeg enc;
 		
-		enc.setInFile( (char*) "MARBLES.JPG1");
+		enc.setInFile( (char*) "MARBLES.JPG");
 		enc.setOutFile( (char*) "MARBLES.JPG.OUT");
 	
 		enc.encrypt();  
