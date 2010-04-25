@@ -25,6 +25,7 @@ main	main.cpp	/^int main()$/;"	f
 memblock	accessjpeg.h	/^	char * memblock;$/;"	m	class:accessJpeg
 out_file	encryptjpeg.h	/^	char* out_file;$/;"	m	class:encryptJpeg
 readInFile	accessjpeg.cpp	/^bool accessJpeg::readInFile(char* in)$/;"	f	class:accessJpeg
+saveBlockBack	accessjpeg.cpp	/^bool accessJpeg::saveBlockBack()$/;"	f	class:accessJpeg
 setInFile	encryptjpeg.h	/^	void setInFile(char* in) {in_file = in;}$/;"	f	class:encryptJpeg
 setOutFile	encryptjpeg.h	/^	void setOutFile(char* out) {out_file = out;}$/;"	f	class:encryptJpeg
 singleblock	accessjpeg.h	/^	char * singleblock; \/\/ single block of img to pass back$/;"	m	class:accessJpeg

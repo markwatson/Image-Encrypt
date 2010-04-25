@@ -22,6 +22,7 @@ public:
 	bool writeOutFile(char* out);
 	bool jumpToStart();
 	char * accessBlock();
+	bool saveBlockBack();
 };
 
 #endif // ACCESSJPEG_H

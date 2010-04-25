@@ -22,7 +22,7 @@ bool encryptJpeg::encrypt() {
 	
 	// do the encryption
 	ptr = file.accessBlock(); // get a block of the image
-
+	file.saveBlockBack();
 	
 	// write out the file
 	out_success = file.writeOutFile(out_file);

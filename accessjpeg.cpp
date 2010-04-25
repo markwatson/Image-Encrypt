@@ -60,11 +60,11 @@ bool accessJpeg::jumpToStart()
 {
 	for (int cnt=0;cnt < size;cnt++)
 	{
+		// 0xFFDA = start of image data
 		if ((unsigned char) memblock[cnt] == 0xFF &&
 			(unsigned char) memblock[cnt+1] == 0xDA)
 		{
 			cursor = cnt;
-			cout << "!!!" << cursor << endl;
 			return true;
 		}
 	}
@@ -82,4 +82,16 @@ char * accessJpeg::accessBlock()
 	}
 
 	return singleblock;
+}
+
+bool accessJpeg::saveBlockBack()
+{
+	// go back to beginning of the last block
+	cursor = cursor - BLOCK_SIZE;
+	// copy data back in
+	for(int cnt = 0;cnt < BLOCK_SIZE;cnt++)
+	{
+		memblock[cursor + cnt] = singleblock[cnt];
+		cursor++;
+	}
 }
