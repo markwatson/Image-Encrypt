@@ -7,20 +7,30 @@
 ACCESSJPEG_H	accessjpeg.h	2;"	d
 AESENCRYPT_H	aesencrypt.h	2;"	d
 BLOCK_SIZE	accessjpeg.h	4;"	d
+BLOCK_SIZE	aesencrypt.h	4;"	d
 ENCRYPTJPEG_H	encryptjpeg.h	2;"	d
+Nb	aesencrypt.h	/^	int Nk, Nb, Nr; \/\/ lengths.$/;"	m	class:aesEncrypt
+Nk	aesencrypt.h	/^	int Nk, Nb, Nr; \/\/ lengths.$/;"	m	class:aesEncrypt
+Nr	aesencrypt.h	/^	int Nk, Nb, Nr; \/\/ lengths.$/;"	m	class:aesEncrypt
 accessBlock	accessjpeg.cpp	/^char * accessJpeg::accessBlock()$/;"	f	class:accessJpeg
 accessJpeg	accessjpeg.cpp	/^accessJpeg::accessJpeg()$/;"	f	class:accessJpeg
 accessJpeg	accessjpeg.h	/^class accessJpeg$/;"	c
+aesEncrypt	aesencrypt.cpp	/^aesEncrypt::aesEncrypt()$/;"	f	class:aesEncrypt
 aesEncrypt	aesencrypt.h	/^class aesEncrypt$/;"	c
 cursor	accessjpeg.h	/^	unsigned long int cursor;$/;"	m	class:accessJpeg
-decrypt	encryptjpeg.cpp	/^bool encryptJpeg::decrypt() {$/;"	f	class:encryptJpeg
-encrypt	encryptjpeg.cpp	/^bool encryptJpeg::encrypt() {$/;"	f	class:encryptJpeg
+decrypt	encryptjpeg.cpp	/^bool encryptJpeg::decrypt()$/;"	f	class:encryptJpeg
+encrypt	encryptjpeg.cpp	/^bool encryptJpeg::encrypt()$/;"	f	class:encryptJpeg
+encryptBlock	aesencrypt.cpp	/^bool aesEncrypt::encryptBlock(char* block)$/;"	f	class:aesEncrypt
 encryptJpeg	encryptjpeg.h	/^class encryptJpeg$/;"	c
+encrypter	encryptjpeg.h	/^	aesEncrypt encrypter;$/;"	m	class:encryptJpeg
+expandKey	aesencrypt.cpp	/^void aesEncrypt::expandKey()$/;"	f	class:aesEncrypt
 file	encryptjpeg.h	/^	accessJpeg file;$/;"	m	class:encryptJpeg
+fullkey	aesencrypt.h	/^	char* fullkey;$/;"	m	class:aesEncrypt
 in_file	encryptjpeg.h	/^	char* in_file;$/;"	m	class:encryptJpeg
 invalidInFile	encryptjpeg.h	/^	class invalidInFile {};$/;"	c	class:encryptJpeg
 invalidOutFile	encryptjpeg.h	/^	class invalidOutFile {};$/;"	c	class:encryptJpeg
 jumpToStart	accessjpeg.cpp	/^bool accessJpeg::jumpToStart()$/;"	f	class:accessJpeg
+key	encryptjpeg.h	/^	std::string key;$/;"	m	class:encryptJpeg
 main	main.cpp	/^int main()$/;"	f
 memblock	accessjpeg.h	/^	char * memblock;$/;"	m	class:accessJpeg
 out_file	encryptjpeg.h	/^	char* out_file;$/;"	m	class:encryptJpeg
@@ -28,7 +38,11 @@ readInFile	accessjpeg.cpp	/^bool accessJpeg::readInFile(char* in)$/;"	f	class:ac
 saveBlockBack	accessjpeg.cpp	/^bool accessJpeg::saveBlockBack()$/;"	f	class:accessJpeg
 setInFile	encryptjpeg.h	/^	void setInFile(char* in) {in_file = in;}$/;"	f	class:encryptJpeg
 setOutFile	encryptjpeg.h	/^	void setOutFile(char* out) {out_file = out;}$/;"	f	class:encryptJpeg
+setPlainKey	encryptjpeg.h	/^	void setPlainKey(std::string in_key) {key = in_key;}$/;"	f	class:encryptJpeg
+setTextKey	aesencrypt.cpp	/^void aesEncrypt::setTextKey(std::string key)$/;"	f	class:aesEncrypt
 singleblock	accessjpeg.h	/^	char * singleblock; \/\/ single block of img to pass back$/;"	m	class:accessJpeg
 size	accessjpeg.h	/^	unsigned long int size;$/;"	m	class:accessJpeg
+textkey	aesencrypt.h	/^	std::string textkey;$/;"	m	class:aesEncrypt
 writeOutFile	accessjpeg.cpp	/^bool accessJpeg::writeOutFile(char* out)$/;"	f	class:accessJpeg
 ~accessJpeg	accessjpeg.cpp	/^accessJpeg::~accessJpeg()$/;"	f	class:accessJpeg
+~aesEncrypt	aesencrypt.cpp	/^aesEncrypt::~aesEncrypt()$/;"	f	class:aesEncrypt

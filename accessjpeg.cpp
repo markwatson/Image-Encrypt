@@ -3,8 +3,6 @@
 
 #include "accessjpeg.h"
 
-using namespace std;
-
 // constructor
 accessJpeg::accessJpeg()
 {
@@ -22,7 +20,8 @@ accessJpeg::~accessJpeg()
 // setfile also reads the file into memory.
 bool accessJpeg::readInFile(char* in)
 {
-	ifstream in_file(in, ios::in|ios::binary|ios::ate);
+	using std::ios;
+	std::fstream in_file(in, ios::in|ios::binary|ios::ate);
 	if (in_file.is_open())
 	{
 		size = in_file.tellg();
@@ -43,7 +42,8 @@ bool accessJpeg::readInFile(char* in)
 
 bool accessJpeg::writeOutFile(char* out)
 {
-	ofstream out_file(out, ios::out|ios::binary);
+	using std::ios;
+	std::ofstream out_file(out, ios::out|ios::binary);
 	if (out_file.is_open())
 	{
 		out_file.write(memblock, size);

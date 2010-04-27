@@ -1,11 +1,9 @@
 #ifndef ACCESSJPEG_H
 #define ACCESSJPEG_H
 
-#define BLOCK_SIZE 64 // blocksize in bytes
+#define BLOCK_SIZE 64
 
 #include <fstream>
-
-using namespace std;
 
 class accessJpeg
 {
@@ -18,8 +16,8 @@ public:
 	
 	accessJpeg();
 	~accessJpeg();
-	bool readInFile(char* in);
-	bool writeOutFile(char* out);
+	bool readInFile(char*);
+	bool writeOutFile(char*);
 	bool jumpToStart();
 	char * accessBlock();
 	bool saveBlockBack();
