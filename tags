@@ -47,6 +47,7 @@ setPlainKey	encryptjpeg.h	/^	void setPlainKey(std::string in_key) {key = in_key;
 setTextKey	aesencrypt.cpp	/^void aesEncrypt::setTextKey(std::string key)$/;"	f	class:aesEncrypt
 singleblock	accessjpeg.h	/^	char * singleblock; \/\/ single block of img to pass back$/;"	m	class:accessJpeg
 size	accessjpeg.h	/^	unsigned long int size;$/;"	m	class:accessJpeg
+subBytes	aesencrypt.cpp	/^void aesEncrypt::subBytes(char * state)$/;"	f	class:aesEncrypt
 textkey	aesencrypt.h	/^	std::string textkey;$/;"	m	class:aesEncrypt
 writeOutFile	accessjpeg.cpp	/^bool accessJpeg::writeOutFile(char* out)$/;"	f	class:accessJpeg
 ~accessJpeg	accessjpeg.cpp	/^accessJpeg::~accessJpeg()$/;"	f	class:accessJpeg

@@ -19,9 +19,12 @@ public:
 	void setTextKey(std::string);
 	void expandKey();
 
+	void subBytes(char *);
+
 	unsigned char sboxify(int val);
 	unsigned char roundify(int index);
-
+	
+	// this one sboxifies a whole word (4 bytes)
 	void sboxify(unsigned char * tmp) {
 		tmp[0] = sboxify(tmp[0]);
 		tmp[1] = sboxify(tmp[1]);
