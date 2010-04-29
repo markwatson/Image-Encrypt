@@ -1,7 +1,7 @@
 #ifndef ACCESSJPEG_H
 #define ACCESSJPEG_H
 
-#define BLOCK_SIZE 4
+#define BLOCK_SIZE 16 
 
 #include <fstream>
 

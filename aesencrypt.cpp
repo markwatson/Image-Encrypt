@@ -7,7 +7,7 @@
 aesEncrypt::aesEncrypt()
 {
 	// set values
-	Nk = 4;
+	Nk = 16;
 	Nb = BLOCK_SIZE;
 	Nr = 10; // extrapolated fom table for aes standard
 	fullkey = NULL;
@@ -24,13 +24,16 @@ aesEncrypt::~aesEncrypt()
 
 bool aesEncrypt::encryptBlock(char* block)
 {
+	printf("%i\n", ffmul(0x57, 0x83));
 	for(int cnt = 1;cnt <= Nr - 1;cnt++)
 	{
 		subBytes(block);
+		shiftRows(block);
+		mixColumns(block);
 	}
 	subBytes(block);
 	
-	return true; // could error check
+	return true; // could error check in future
 }
 
 void aesEncrypt::setTextKey(std::string key)
@@ -63,7 +66,7 @@ void aesEncrypt::setTextKey(std::string key)
 void aesEncrypt::expandKey()
 {
 	// limit
-	int limit = Nb*(Nr+1);
+	int limit = (Nb/4)*(Nr+1);
 	// grab some fresh memory for the expanded key
 	expandedkey = new char [4*limit];
 	// main counter
@@ -114,6 +117,63 @@ void aesEncrypt::subBytes(char * state)
 	{
 		state[cnt] = sboxify(state[cnt]);
 	}
+}
+
+void aesEncrypt::shiftRows(char * state)
+{
+	for (int row = 1; row < 4;row++)
+	{
+		// shift it over needed amount of times
+		// 0 for row 1, 1, for row 2, etc.
+		for (int n = 0; n < row;n++)
+		{
+			// pass in a pointer to the row
+			rotate((unsigned char*) state + (row*4));
+		}
+	}
+}
+
+void aesEncrypt::mixColumns(char * state)
+{
+	unsigned char temp[4];
+
+	for (int col = 0; col < (Nb/4); col++)
+	{
+		for (int n = 0; n < 4; n++)
+		{
+			temp[n] = state[col*4+n];
+		}
+		for (int cnt = 0; cnt < 4; cnt++)
+		{
+			state[col*4+cnt] = ffmul(0x02, temp[cnt]) ^
+			                 ffmul(0x03, temp[(cnt+1) % 4]) ^
+							 temp[(cnt+2) % 4] ^
+							 temp[(cnt+3) % 4];
+
+		}
+	}
+}
+
+// this function multiplies two values
+// ints are passed in to deal with overflow
+unsigned char aesEncrypt::ffmul(unsigned char x, unsigned char y) {
+	if (x == 0 && y == 0) return 0; // special case...
+	// bitsets
+	std::bitset<8> p (0);
+	std::bitset<8> a (x);
+	std::bitset<8> b (y);
+	// bool
+	bool left_a;
+	// run
+	for(int cnt = 0; cnt < 8;cnt++)
+	{
+		if (b[0]) p ^= a;
+		left_a = a[7];
+		a<<=1;
+		if (left_a) a^=0x1b;
+		b>>=1;
+	}
+	return (unsigned char) p.to_ulong();
 }
 
 unsigned char aesEncrypt::sboxify(int val)

@@ -1,9 +1,10 @@
 #ifndef AESENCRYPT_H
 #define AESENCRYPT_H
 
-#define BLOCK_SIZE 4
+#define BLOCK_SIZE 16
 
 #include <string>
+#include <bitset>
 
 class aesEncrypt
 {
@@ -20,9 +21,13 @@ public:
 	void expandKey();
 
 	void subBytes(char *);
+	void shiftRows(char *);
+	void mixColumns(char *);
 
 	unsigned char sboxify(int val);
 	unsigned char roundify(int index);
+	
+	unsigned char ffmul(unsigned char, unsigned char);
 	
 	// this one sboxifies a whole word (4 bytes)
 	void sboxify(unsigned char * tmp) {
@@ -31,7 +36,8 @@ public:
 		tmp[2] = sboxify(tmp[2]);
 		tmp[3] = sboxify(tmp[3]);
 	}
-
+	
+	// assumes 4 columns
 	void rotate(unsigned char * tmp) {
 		unsigned char trimmings;
 		trimmings = tmp[0];

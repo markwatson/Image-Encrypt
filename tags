@@ -25,6 +25,7 @@ encryptJpeg	encryptjpeg.h	/^class encryptJpeg$/;"	c
 encrypter	encryptjpeg.h	/^	aesEncrypt encrypter;$/;"	m	class:encryptJpeg
 expandKey	aesencrypt.cpp	/^void aesEncrypt::expandKey()$/;"	f	class:aesEncrypt
 expandedkey	aesencrypt.h	/^	char* expandedkey;$/;"	m	class:aesEncrypt
+ffmul	aesencrypt.h	/^	unsigned char ffmul(unsigned char x, unsigned char y) {$/;"	f	class:aesEncrypt
 file	encryptjpeg.h	/^	accessJpeg file;$/;"	m	class:encryptJpeg
 fullkey	aesencrypt.h	/^	char* fullkey;$/;"	m	class:aesEncrypt
 in_file	encryptjpeg.h	/^	char* in_file;$/;"	m	class:encryptJpeg
@@ -34,6 +35,7 @@ jumpToStart	accessjpeg.cpp	/^bool accessJpeg::jumpToStart()$/;"	f	class:accessJp
 key	encryptjpeg.h	/^	std::string key;$/;"	m	class:encryptJpeg
 main	main.cpp	/^int main()$/;"	f
 memblock	accessjpeg.h	/^	char * memblock;$/;"	m	class:accessJpeg
+mixColumns	aesencrypt.cpp	/^void aesEncrypt::mixColumns(char * state)$/;"	f	class:aesEncrypt
 out_file	encryptjpeg.h	/^	char* out_file;$/;"	m	class:encryptJpeg
 readInFile	accessjpeg.cpp	/^bool accessJpeg::readInFile(char* in)$/;"	f	class:accessJpeg
 rotate	aesencrypt.h	/^	void rotate(unsigned char * tmp) {$/;"	f	class:aesEncrypt
@@ -45,6 +47,7 @@ setInFile	encryptjpeg.h	/^	void setInFile(char* in) {in_file = in;}$/;"	f	class:
 setOutFile	encryptjpeg.h	/^	void setOutFile(char* out) {out_file = out;}$/;"	f	class:encryptJpeg
 setPlainKey	encryptjpeg.h	/^	void setPlainKey(std::string in_key) {key = in_key;}$/;"	f	class:encryptJpeg
 setTextKey	aesencrypt.cpp	/^void aesEncrypt::setTextKey(std::string key)$/;"	f	class:aesEncrypt
+shiftRows	aesencrypt.cpp	/^void aesEncrypt::shiftRows(char * state)$/;"	f	class:aesEncrypt
 singleblock	accessjpeg.h	/^	char * singleblock; \/\/ single block of img to pass back$/;"	m	class:accessJpeg
 size	accessjpeg.h	/^	unsigned long int size;$/;"	m	class:accessJpeg
 subBytes	aesencrypt.cpp	/^void aesEncrypt::subBytes(char * state)$/;"	f	class:aesEncrypt
