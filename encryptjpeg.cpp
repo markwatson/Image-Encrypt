@@ -5,7 +5,7 @@
 #include "aesencrypt.h"
 #include "encryptjpeg.h"
 
-bool encryptJpeg::encrypt()
+bool encryptJpeg::process(char * action)
 {
 	char * ptr; // ptr to a block
 	bool in_success;
@@ -24,7 +24,19 @@ bool encryptJpeg::encrypt()
 		
 	// do the encryption
 	ptr = file.accessBlock(); // get a block of the image
-	encrypter.encryptBlock(ptr); // run the encryption
+	if (action == "encrypt")
+	{
+		encrypter.encryptBlock(ptr); // run the encryption
+	}
+	else if (action == "decrypt")
+	{
+		encrypter.decryptBlock(ptr);
+	}
+	else
+	{
+		throw invalidAction();
+		return false;
+	}
 	file.saveBlockBack(); // save out the block
 	
 	// write out the file
@@ -32,10 +44,5 @@ bool encryptJpeg::encrypt()
 	if (!out_success)
 		throw invalidOutFile();
 	
-	return true;
-}
-
-bool encryptJpeg::decrypt()
-{
 	return true;
 }

@@ -24,16 +24,25 @@ aesEncrypt::~aesEncrypt()
 
 bool aesEncrypt::encryptBlock(char* block)
 {
-	printf("%i\n", ffmul(0x57, 0x83));
-	for(int cnt = 1;cnt <= Nr - 1;cnt++)
+	xorRoundKey(block, expandedkey);
+
+	for(int cnt = 1;cnt <= Nr-1;cnt++)
 	{
 		subBytes(block);
 		shiftRows(block);
 		mixColumns(block);
+		xorRoundKey(block, expandedkey + cnt * (Nb/4));
 	}
 	subBytes(block);
+	shiftRows(block);
+	xorRoundKey(block, expandedkey + Nr * (Nb/4));
 	
 	return true; // could error check in future
+}
+
+bool aesEncrypt::decryptBlock(char* block)
+{
+	return true;
 }
 
 void aesEncrypt::setTextKey(std::string key)
@@ -153,6 +162,15 @@ void aesEncrypt::mixColumns(char * state)
 		}
 	}
 }
+
+void aesEncrypt::xorRoundKey(char * state, char * key)
+{
+	for (int cnt = 0;cnt < Nb;cnt++)
+	{
+		state[cnt] = key[cnt];
+	}
+}
+
 
 // this function multiplies two values
 // ints are passed in to deal with overflow

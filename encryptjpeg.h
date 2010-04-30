@@ -16,10 +16,11 @@ private:
 public:
 	class invalidInFile {};
 	class invalidOutFile {};
+	class invalidAction {};
+
 	void setInFile(char* in) {in_file = in;}
 	void setOutFile(char* out) {out_file = out;}
-	bool encrypt();
-	bool decrypt();
+	bool process(char *);
 	void setPlainKey(std::string in_key) {key = in_key;}
 };
 

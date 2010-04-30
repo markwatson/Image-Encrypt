@@ -17,12 +17,14 @@ public:
 	aesEncrypt();
 	~aesEncrypt();
 	bool encryptBlock(char*);
+	bool decryptBlock(char*);
 	void setTextKey(std::string);
 	void expandKey();
 
 	void subBytes(char *);
 	void shiftRows(char *);
 	void mixColumns(char *);
+	void xorRoundKey(char *, char *);
 
 	unsigned char sboxify(int val);
 	unsigned char roundify(int index);

@@ -18,17 +18,16 @@ accessJpeg	accessjpeg.h	/^class accessJpeg$/;"	c
 aesEncrypt	aesencrypt.cpp	/^aesEncrypt::aesEncrypt()$/;"	f	class:aesEncrypt
 aesEncrypt	aesencrypt.h	/^class aesEncrypt$/;"	c
 cursor	accessjpeg.h	/^	unsigned long int cursor;$/;"	m	class:accessJpeg
-decrypt	encryptjpeg.cpp	/^bool encryptJpeg::decrypt()$/;"	f	class:encryptJpeg
-encrypt	encryptjpeg.cpp	/^bool encryptJpeg::encrypt()$/;"	f	class:encryptJpeg
 encryptBlock	aesencrypt.cpp	/^bool aesEncrypt::encryptBlock(char* block)$/;"	f	class:aesEncrypt
 encryptJpeg	encryptjpeg.h	/^class encryptJpeg$/;"	c
 encrypter	encryptjpeg.h	/^	aesEncrypt encrypter;$/;"	m	class:encryptJpeg
 expandKey	aesencrypt.cpp	/^void aesEncrypt::expandKey()$/;"	f	class:aesEncrypt
 expandedkey	aesencrypt.h	/^	char* expandedkey;$/;"	m	class:aesEncrypt
-ffmul	aesencrypt.h	/^	unsigned char ffmul(unsigned char x, unsigned char y) {$/;"	f	class:aesEncrypt
+ffmul	aesencrypt.cpp	/^unsigned char aesEncrypt::ffmul(unsigned char x, unsigned char y) {$/;"	f	class:aesEncrypt
 file	encryptjpeg.h	/^	accessJpeg file;$/;"	m	class:encryptJpeg
 fullkey	aesencrypt.h	/^	char* fullkey;$/;"	m	class:aesEncrypt
 in_file	encryptjpeg.h	/^	char* in_file;$/;"	m	class:encryptJpeg
+invalidAction	encryptjpeg.h	/^	class invalidAction {};$/;"	c	class:encryptJpeg
 invalidInFile	encryptjpeg.h	/^	class invalidInFile {};$/;"	c	class:encryptJpeg
 invalidOutFile	encryptjpeg.h	/^	class invalidOutFile {};$/;"	c	class:encryptJpeg
 jumpToStart	accessjpeg.cpp	/^bool accessJpeg::jumpToStart()$/;"	f	class:accessJpeg
@@ -37,6 +36,7 @@ main	main.cpp	/^int main()$/;"	f
 memblock	accessjpeg.h	/^	char * memblock;$/;"	m	class:accessJpeg
 mixColumns	aesencrypt.cpp	/^void aesEncrypt::mixColumns(char * state)$/;"	f	class:aesEncrypt
 out_file	encryptjpeg.h	/^	char* out_file;$/;"	m	class:encryptJpeg
+process	encryptjpeg.cpp	/^bool encryptJpeg::process(char * action)$/;"	f	class:encryptJpeg
 readInFile	accessjpeg.cpp	/^bool accessJpeg::readInFile(char* in)$/;"	f	class:accessJpeg
 rotate	aesencrypt.h	/^	void rotate(unsigned char * tmp) {$/;"	f	class:aesEncrypt
 roundify	aesencrypt.cpp	/^unsigned char aesEncrypt::roundify(int index)$/;"	f	class:aesEncrypt
@@ -53,5 +53,6 @@ size	accessjpeg.h	/^	unsigned long int size;$/;"	m	class:accessJpeg
 subBytes	aesencrypt.cpp	/^void aesEncrypt::subBytes(char * state)$/;"	f	class:aesEncrypt
 textkey	aesencrypt.h	/^	std::string textkey;$/;"	m	class:aesEncrypt
 writeOutFile	accessjpeg.cpp	/^bool accessJpeg::writeOutFile(char* out)$/;"	f	class:accessJpeg
+xorRoundKey	aesencrypt.cpp	/^void aesEncrypt::xorRoundKey(char * state, char * key)$/;"	f	class:aesEncrypt
 ~accessJpeg	accessjpeg.cpp	/^accessJpeg::~accessJpeg()$/;"	f	class:accessJpeg
 ~aesEncrypt	aesencrypt.cpp	/^aesEncrypt::~aesEncrypt()$/;"	f	class:aesEncrypt
