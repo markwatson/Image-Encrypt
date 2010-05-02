@@ -20,7 +20,7 @@ public:
 
 	void setInFile(char* in) {in_file = in;}
 	void setOutFile(char* out) {out_file = out;}
-	bool process(char *);
+	bool process(char);
 	void setPlainKey(std::string in_key) {key = in_key;}
 };
 

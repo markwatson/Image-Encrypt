@@ -24,14 +24,14 @@ int main()
 		enc.setPlainKey(key);
 
 		// do the actual encryption
-		enc.process("encrypt");
+		enc.process('e');
 
 		// set output
 		enc.setInFile( (char*) "MARBLES.JPG.OUT");
 		enc.setOutFile( (char*) "MARBLES.UNENCED.JPG");
 
 		// do decrypt
-		enc.process("decrypt");
+		enc.process('d');
 	}
 	catch(encryptJpeg::invalidInFile)
 	{
@@ -43,7 +43,7 @@ int main()
 	}
 	catch(encryptJpeg::invalidAction)
 	{
-		cout << "there was a problem internal to the program..." << endl;
+		cout << "The program encountered an internal error..." << endl;
 	}
 
 	return 0;

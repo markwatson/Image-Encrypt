@@ -42,6 +42,15 @@ bool aesEncrypt::encryptBlock(char* block)
 
 bool aesEncrypt::decryptBlock(char* block)
 {
+	xorRoundKey(block, expandedkey + Nr * (Nb/4));
+
+	for(int cnt = Nr-1; cnt > 0;cnt--)
+	{
+		xorRoundKey(block, expandedkey + cnt * (Nb/4));
+	}
+
+	xorRoundKey(block, expandedkey);
+	
 	return true;
 }
 

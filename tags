@@ -18,6 +18,7 @@ accessJpeg	accessjpeg.h	/^class accessJpeg$/;"	c
 aesEncrypt	aesencrypt.cpp	/^aesEncrypt::aesEncrypt()$/;"	f	class:aesEncrypt
 aesEncrypt	aesencrypt.h	/^class aesEncrypt$/;"	c
 cursor	accessjpeg.h	/^	unsigned long int cursor;$/;"	m	class:accessJpeg
+decryptBlock	aesencrypt.cpp	/^bool aesEncrypt::decryptBlock(char* block)$/;"	f	class:aesEncrypt
 encryptBlock	aesencrypt.cpp	/^bool aesEncrypt::encryptBlock(char* block)$/;"	f	class:aesEncrypt
 encryptJpeg	encryptjpeg.h	/^class encryptJpeg$/;"	c
 encrypter	encryptjpeg.h	/^	aesEncrypt encrypter;$/;"	m	class:encryptJpeg
@@ -36,7 +37,7 @@ main	main.cpp	/^int main()$/;"	f
 memblock	accessjpeg.h	/^	char * memblock;$/;"	m	class:accessJpeg
 mixColumns	aesencrypt.cpp	/^void aesEncrypt::mixColumns(char * state)$/;"	f	class:aesEncrypt
 out_file	encryptjpeg.h	/^	char* out_file;$/;"	m	class:encryptJpeg
-process	encryptjpeg.cpp	/^bool encryptJpeg::process(char * action)$/;"	f	class:encryptJpeg
+process	encryptjpeg.cpp	/^bool encryptJpeg::process(char action)$/;"	f	class:encryptJpeg
 readInFile	accessjpeg.cpp	/^bool accessJpeg::readInFile(char* in)$/;"	f	class:accessJpeg
 rotate	aesencrypt.h	/^	void rotate(unsigned char * tmp) {$/;"	f	class:aesEncrypt
 roundify	aesencrypt.cpp	/^unsigned char aesEncrypt::roundify(int index)$/;"	f	class:aesEncrypt
