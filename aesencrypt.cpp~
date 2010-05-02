@@ -164,22 +164,7 @@ void aesEncrypt::invShiftRows(char * state)
 
 void aesEncrypt::invMixColumns(char * state)
 {
-	unsigned char temp[4];
 
-	for (int col = 0; col < (Nb/4); col++)
-	{
-		for (int n = 0; n < 4; n++)
-		{
-			temp[n] = state[col*4+n];
-		}
-		for (int cnt = 0; cnt < 4; cnt++)
-		{
-			state[col*4+cnt] = ffmul(0x0e, temp[cnt]) ^
-			                   ffmul(0x0b, temp[(cnt+1) % 4]) ^
-			                   ffmul(0x0d, temp[(cnt+2) % 4]) ^
-			                   ffmul(0x09, temp[(cnt+3) % 4]); 
-		}
-	}
 }
 
 void aesEncrypt::shiftRows(char * state)
@@ -209,9 +194,9 @@ void aesEncrypt::mixColumns(char * state)
 		for (int cnt = 0; cnt < 4; cnt++)
 		{
 			state[col*4+cnt] = ffmul(0x02, temp[cnt]) ^
-			                   ffmul(0x03, temp[(cnt+1) % 4]) ^
-			                   temp[(cnt+2) % 4] ^
-			                   temp[(cnt+3) % 4];
+			                 ffmul(0x03, temp[(cnt+1) % 4]) ^
+							 temp[(cnt+2) % 4] ^
+							 temp[(cnt+3) % 4];
 
 		}
 	}

@@ -22,11 +22,15 @@ public:
 	void expandKey();
 
 	void subBytes(char *);
+	void invSubBytes(char *);
 	void shiftRows(char *);
+	void invShiftRows(char *);
 	void mixColumns(char *);
+	void invMixColumns(char *);
 	void xorRoundKey(char *, char *);
 
 	unsigned char sboxify(int val);
+	unsigned char invsboxify(int val);
 	unsigned char roundify(int index);
 	
 	unsigned char ffmul(unsigned char, unsigned char);
@@ -39,13 +43,21 @@ public:
 		tmp[3] = sboxify(tmp[3]);
 	}
 	
-	// assumes 4 columns
-	void rotate(unsigned char * tmp) {
+	// assumes a word
+	void rotate_left(unsigned char * tmp) {
 		unsigned char trimmings;
 		trimmings = tmp[0];
 		tmp[0] = tmp[1];
 		tmp[1] = tmp[2];
 		tmp[3] = trimmings;
+	}
+	void rotate_right(unsigned char * tmp) {
+		unsigned char trimmings;
+		trimmings = tmp[3];
+		tmp[3] = tmp[2];
+		tmp[2] = tmp[1];
+		tmp[1] = tmp[0];
+		tmp[0] = trimmings;
 	}
 };
 

@@ -28,9 +28,13 @@ ffmul	aesencrypt.cpp	/^unsigned char aesEncrypt::ffmul(unsigned char x, unsigned
 file	encryptjpeg.h	/^	accessJpeg file;$/;"	m	class:encryptJpeg
 fullkey	aesencrypt.h	/^	char* fullkey;$/;"	m	class:aesEncrypt
 in_file	encryptjpeg.h	/^	char* in_file;$/;"	m	class:encryptJpeg
+invMixColumns	aesencrypt.cpp	/^void aesEncrypt::invMixColumns(char * state)$/;"	f	class:aesEncrypt
+invShiftRows	aesencrypt.cpp	/^void aesEncrypt::invShiftRows(char * state)$/;"	f	class:aesEncrypt
+invSubBytes	aesencrypt.cpp	/^void aesEncrypt::invSubBytes(char * state)$/;"	f	class:aesEncrypt
 invalidAction	encryptjpeg.h	/^	class invalidAction {};$/;"	c	class:encryptJpeg
 invalidInFile	encryptjpeg.h	/^	class invalidInFile {};$/;"	c	class:encryptJpeg
 invalidOutFile	encryptjpeg.h	/^	class invalidOutFile {};$/;"	c	class:encryptJpeg
+invsboxify	aesencrypt.cpp	/^unsigned char aesEncrypt::invsboxify(int val)$/;"	f	class:aesEncrypt
 jumpToStart	accessjpeg.cpp	/^bool accessJpeg::jumpToStart()$/;"	f	class:accessJpeg
 key	encryptjpeg.h	/^	std::string key;$/;"	m	class:encryptJpeg
 main	main.cpp	/^int main()$/;"	f
@@ -39,7 +43,8 @@ mixColumns	aesencrypt.cpp	/^void aesEncrypt::mixColumns(char * state)$/;"	f	clas
 out_file	encryptjpeg.h	/^	char* out_file;$/;"	m	class:encryptJpeg
 process	encryptjpeg.cpp	/^bool encryptJpeg::process(char action)$/;"	f	class:encryptJpeg
 readInFile	accessjpeg.cpp	/^bool accessJpeg::readInFile(char* in)$/;"	f	class:accessJpeg
-rotate	aesencrypt.h	/^	void rotate(unsigned char * tmp) {$/;"	f	class:aesEncrypt
+rotate_left	aesencrypt.h	/^	void rotate_left(unsigned char * tmp) {$/;"	f	class:aesEncrypt
+rotate_right	aesencrypt.h	/^	void rotate_right(unsigned char * tmp) {$/;"	f	class:aesEncrypt
 roundify	aesencrypt.cpp	/^unsigned char aesEncrypt::roundify(int index)$/;"	f	class:aesEncrypt
 saveBlockBack	accessjpeg.cpp	/^bool accessJpeg::saveBlockBack()$/;"	f	class:accessJpeg
 sboxify	aesencrypt.cpp	/^unsigned char aesEncrypt::sboxify(int val)$/;"	f	class:aesEncrypt
