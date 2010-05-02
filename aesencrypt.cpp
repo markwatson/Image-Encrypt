@@ -8,7 +8,7 @@ aesEncrypt::aesEncrypt()
 {
 	// set values
 	Nk = 16;
-	Nb = BLOCK_SIZE;
+	Nb = BLOCK_SIZE; // !! important, this is in bytes, not words
 	Nr = 10; // extrapolated fom table for aes standard
 	fullkey = NULL;
 	expandedkey = NULL;
@@ -24,6 +24,9 @@ aesEncrypt::~aesEncrypt()
 
 bool aesEncrypt::encryptBlock(char* block)
 {
+	// expand the key
+	expandKey();
+
 	xorRoundKey(block, expandedkey);
 
 	for(int cnt = 1;cnt <= Nr-1;cnt++)
@@ -42,6 +45,9 @@ bool aesEncrypt::encryptBlock(char* block)
 
 bool aesEncrypt::decryptBlock(char* block)
 {
+	// expand the key
+	invExpandKey();
+
 	xorRoundKey(block, expandedkey + Nr * (Nb/4));
 
 	for(int cnt = Nr-1; cnt > 0;cnt--)
@@ -81,9 +87,6 @@ void aesEncrypt::setTextKey(std::string key)
 
 		pos++; // incrmemnt string position
 	}
-
-	// expand the key
-	expandKey();
 }
 
 void aesEncrypt::expandKey()
@@ -131,6 +134,18 @@ void aesEncrypt::expandKey()
 		expandedkey[cnt*4+1] = expandedkey[(cnt-Nk)*4+1] ^ temp[0];
 		expandedkey[cnt*4+2] = expandedkey[(cnt-Nk)*4+2] ^ temp[0];
 		expandedkey[cnt*4+3] = expandedkey[(cnt-Nk)*4+3] ^ temp[0];
+	}
+}
+
+void aesEncrypt::invExpandKey()
+{
+	// call expand key
+	expandKey();
+
+	// invert it so it decrypts
+	for (int cnt = 0; cnt < Nr; cnt++)
+	{
+		invMixColumns(expandedkey + cnt * (Nb/4));
 	}
 }
 

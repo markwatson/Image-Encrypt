@@ -20,6 +20,7 @@ public:
 	bool decryptBlock(char*);
 	void setTextKey(std::string);
 	void expandKey();
+	void invExpandKey();
 
 	void subBytes(char *);
 	void invSubBytes(char *);

@@ -28,6 +28,7 @@ ffmul	aesencrypt.cpp	/^unsigned char aesEncrypt::ffmul(unsigned char x, unsigned
 file	encryptjpeg.h	/^	accessJpeg file;$/;"	m	class:encryptJpeg
 fullkey	aesencrypt.h	/^	char* fullkey;$/;"	m	class:aesEncrypt
 in_file	encryptjpeg.h	/^	char* in_file;$/;"	m	class:encryptJpeg
+invExpandKey	aesencrypt.cpp	/^void aesEncrypt::invExpandKey()$/;"	f	class:aesEncrypt
 invMixColumns	aesencrypt.cpp	/^void aesEncrypt::invMixColumns(char * state)$/;"	f	class:aesEncrypt
 invShiftRows	aesencrypt.cpp	/^void aesEncrypt::invShiftRows(char * state)$/;"	f	class:aesEncrypt
 invSubBytes	aesencrypt.cpp	/^void aesEncrypt::invSubBytes(char * state)$/;"	f	class:aesEncrypt
