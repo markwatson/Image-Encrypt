@@ -7,7 +7,7 @@
 aesEncrypt::aesEncrypt()
 {
 	// set values
-	Nk = 16;
+	Nk = 4;
 	Nb = BLOCK_SIZE; // !! important, this is in bytes, not words
 	Nr = 10; // extrapolated fom table for aes standard
 	fullkey = NULL;
