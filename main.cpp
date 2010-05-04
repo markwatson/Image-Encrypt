@@ -12,6 +12,7 @@ int main()
 	{
 		// variables
 		encryptJpeg enc;
+		encryptJpeg dec;
 		string key;
 		
 		// set files
@@ -27,11 +28,12 @@ int main()
 		enc.process('e');
 
 		// set output
-		enc.setInFile( (char*) "MARBLES.JPG.OUT");
-		enc.setOutFile( (char*) "MARBLES.UNENCED.JPG");
+		dec.setInFile( (char*) "MARBLES.JPG.OUT");
+		dec.setOutFile( (char*) "MARBLES.UNENCED.JPG");
+		dec.setPlainKey(key);
 
 		// do decrypt
-		enc.process('d');
+		dec.process('d');
 	}
 	catch(encryptJpeg::invalidInFile)
 	{

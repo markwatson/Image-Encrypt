@@ -7,7 +7,7 @@
 aesEncrypt::aesEncrypt()
 {
 	// set values
-	Nk = 4;
+	Nk = 4; // this is in words
 	Nb = BLOCK_SIZE; // !! important, this is in bytes, not words
 	Nr = 10; // extrapolated fom table for aes standard
 	fullkey = NULL;
@@ -24,30 +24,24 @@ aesEncrypt::~aesEncrypt()
 
 bool aesEncrypt::encryptBlock(char* block)
 {
-	// expand the key
-	expandKey();
-
 	xorRoundKey(block, expandedkey);
 
-	for(int cnt = 1;cnt <= Nr-1;cnt++)
+	for(int cnt = 0;cnt < Nr;cnt++)
 	{
 		subBytes(block);
 		shiftRows(block);
 		mixColumns(block);
-		xorRoundKey(block, expandedkey + cnt * (Nb/4));
+		xorRoundKey(block, expandedkey + (cnt * (Nb/4)));
 	}
 	subBytes(block);
 	shiftRows(block);
-	xorRoundKey(block, expandedkey + Nr * (Nb/4));
+	xorRoundKey(block, expandedkey + (Nr * (Nb/4)));
 	
 	return true; // could error check in future
 }
 
 bool aesEncrypt::decryptBlock(char* block)
 {
-	// expand the key
-	invExpandKey();
-
 	xorRoundKey(block, expandedkey + Nr * (Nb/4));
 
 	for(int cnt = Nr-1; cnt > 0;cnt--)
@@ -65,7 +59,7 @@ bool aesEncrypt::decryptBlock(char* block)
 	return true;
 }
 
-void aesEncrypt::setTextKey(std::string key)
+void aesEncrypt::setTextKey(std::string key, char action)
 {
 	// set the key
 	fullkey = new char [Nk * 4];
@@ -87,6 +81,11 @@ void aesEncrypt::setTextKey(std::string key)
 
 		pos++; // incrmemnt string position
 	}
+	
+	if (action == 'e')
+		expandKey();
+	else
+		invExpandKey();
 }
 
 void aesEncrypt::expandKey()
@@ -109,14 +108,13 @@ void aesEncrypt::expandKey()
 		expandedkey[cnt*4+3] = fullkey[cnt*4+3];
 	}
 	// continue where we left off with other keys
-	for (;cnt < limit;cnt++)
+	for (cnt = Nk;cnt < limit;cnt++)
 	{
 		// copy key into temp location
 		for(int n=0;n<4;n++)
 		{
 			temp[n] = expandedkey[(cnt-1) * 4 + n];
 		}
-		// 
 		if (cnt % Nk == 0)
 		{
 			// rotate and then sboxify
@@ -125,15 +123,11 @@ void aesEncrypt::expandKey()
 			// round
 			temp[0] ^= roundify(cnt/Nk);
 		}
-		else if (Nk > 6 && cnt % Nk == 4)
-		{
-			sboxify(temp);
-		}
 		// xor temp back in
 		expandedkey[cnt*4] = expandedkey[(cnt-Nk)*4] ^ temp[0];
-		expandedkey[cnt*4+1] = expandedkey[(cnt-Nk)*4+1] ^ temp[0];
-		expandedkey[cnt*4+2] = expandedkey[(cnt-Nk)*4+2] ^ temp[0];
-		expandedkey[cnt*4+3] = expandedkey[(cnt-Nk)*4+3] ^ temp[0];
+		expandedkey[cnt*4+1] = expandedkey[(cnt-Nk)*4+1] ^ temp[1];
+		expandedkey[cnt*4+2] = expandedkey[(cnt-Nk)*4+2] ^ temp[2];
+		expandedkey[cnt*4+3] = expandedkey[(cnt-Nk)*4+3] ^ temp[3];
 	}
 }
 
@@ -143,9 +137,9 @@ void aesEncrypt::invExpandKey()
 	expandKey();
 
 	// invert it so it decrypts
-	for (int cnt = 0; cnt < Nr; cnt++)
+	for (int cnt = 1; cnt < (Nr-1); cnt++)
 	{
-		//invMixColumns(expandedkey + cnt * (Nb/4));
+		invMixColumns(expandedkey + cnt * (Nb/4));
 	}
 }
 
@@ -170,7 +164,7 @@ void aesEncrypt::invShiftRows(char * state)
 	for (int row = 1; row <4; row++)
 	{
 		// see below
-		for (int n = 0; n < row; n++)
+		for (int n = 1; n < (row+1); n++)
 		{
 			rotate_right((unsigned char*) state + (row*4));
 		}
@@ -185,11 +179,11 @@ void aesEncrypt::invMixColumns(char * state)
 	{
 		for (int n = 0; n < 4; n++)
 		{
-			temp[n] = state[col*4+n];
+			temp[n] = state[n*4+col];
 		}
 		for (int cnt = 0; cnt < 4; cnt++)
 		{
-			state[col*4+cnt] = ffmul(0x0e, temp[cnt]) ^
+			state[cnt*4+col] = ffmul(0x0e, temp[cnt]) ^
 			                   ffmul(0x0b, temp[(cnt+1) % 4]) ^
 			                   ffmul(0x0d, temp[(cnt+2) % 4]) ^
 			                   ffmul(0x09, temp[(cnt+3) % 4]); 
@@ -203,7 +197,7 @@ void aesEncrypt::shiftRows(char * state)
 	{
 		// shift it over needed amount of times
 		// 0 for row 1, 1, for row 2, etc.
-		for (int n = 0; n < row;n++)
+		for (int n = 1; n < (row+1);n++)
 		{
 			// pass in a pointer to the row
 			rotate_left((unsigned char*) state + (row*4));
@@ -219,11 +213,11 @@ void aesEncrypt::mixColumns(char * state)
 	{
 		for (int n = 0; n < 4; n++)
 		{
-			temp[n] = state[col*4+n];
+			temp[n] = state[n*4+col]; //state[col*4+n];
 		}
 		for (int cnt = 0; cnt < 4; cnt++)
 		{
-			state[col*4+cnt] = ffmul(0x02, temp[cnt]) ^
+			state[cnt*4+col] = ffmul(0x02, temp[cnt]) ^
 			                   ffmul(0x03, temp[(cnt+1) % 4]) ^
 			                   temp[(cnt+2) % 4] ^
 			                   temp[(cnt+3) % 4];
@@ -236,7 +230,7 @@ void aesEncrypt::xorRoundKey(char * state, char * key)
 {
 	for (int cnt = 0;cnt < Nb;cnt++)
 	{
-		state[cnt] = key[cnt];
+		state[cnt] = state[cnt] ^ key[cnt];
 	}
 }
 

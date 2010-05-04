@@ -53,7 +53,7 @@ sboxify	aesencrypt.h	/^	void sboxify(unsigned char * tmp) {$/;"	f	class:aesEncry
 setInFile	encryptjpeg.h	/^	void setInFile(char* in) {in_file = in;}$/;"	f	class:encryptJpeg
 setOutFile	encryptjpeg.h	/^	void setOutFile(char* out) {out_file = out;}$/;"	f	class:encryptJpeg
 setPlainKey	encryptjpeg.h	/^	void setPlainKey(std::string in_key) {key = in_key;}$/;"	f	class:encryptJpeg
-setTextKey	aesencrypt.cpp	/^void aesEncrypt::setTextKey(std::string key)$/;"	f	class:aesEncrypt
+setTextKey	aesencrypt.cpp	/^void aesEncrypt::setTextKey(std::string key, char action)$/;"	f	class:aesEncrypt
 shiftRows	aesencrypt.cpp	/^void aesEncrypt::shiftRows(char * state)$/;"	f	class:aesEncrypt
 singleblock	accessjpeg.h	/^	char * singleblock; \/\/ single block of img to pass back$/;"	m	class:accessJpeg
 size	accessjpeg.h	/^	unsigned long int size;$/;"	m	class:accessJpeg

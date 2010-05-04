@@ -18,7 +18,7 @@ public:
 	~aesEncrypt();
 	bool encryptBlock(char*);
 	bool decryptBlock(char*);
-	void setTextKey(std::string);
+	void setTextKey(std::string, char);
 	void expandKey();
 	void invExpandKey();
 
