@@ -1,12 +1,12 @@
 
 [Anjuta]
-Geometry=958x1054+0+24
+Geometry=1918x1054+0+24
 
 [Project Manager]
 Shortcut=C file:///home/mark/projects/Image-Encrypt/clean clean %%%C file:///home/mark/projects/Image-Encrypt/aesencrypt.o aesencrypt.o %%%C file:///home/mark/projects/Image-Encrypt/accessjpeg.o accessjpeg.o %%%C file:///home/mark/projects/Image-Encrypt/main.o main.o %%%C file:///home/mark/projects/Image-Encrypt/encryptjpeg.o encryptjpeg.o %%%C file:///home/mark/projects/Image-Encrypt/image_encrypt image_encrypt 
 
 [File Loader]
-Files=file:///home/mark/projects/Image-Encrypt/accessjpeg.cpp#22
+Files=file:///home/mark/projects/Image-Encrypt/accessjpeg.cpp#35%%%file:///home/mark/projects/Image-Encrypt/aesencrypt.cpp#70
 
 [Document Manager]
 bookmarks=<?xml version="1.0" encoding="UTF-8"?>\n<bookmarks/>\n

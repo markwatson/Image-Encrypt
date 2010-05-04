@@ -145,7 +145,7 @@ void aesEncrypt::invExpandKey()
 	// invert it so it decrypts
 	for (int cnt = 0; cnt < Nr; cnt++)
 	{
-		invMixColumns(expandedkey + cnt * (Nb/4));
+		//invMixColumns(expandedkey + cnt * (Nb/4));
 	}
 }
 
