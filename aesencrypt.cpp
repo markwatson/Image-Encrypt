@@ -123,7 +123,7 @@ void aesEncrypt::expandKey()
 		// copy key into temp location
 		for(int n=0;n<4;n++)
 		{
-			temp[n] = expandedkey[(cnt-1) * 4 + n];
+			temp[n] = expandedkey[(cnt-1)*4+n];
 		}
 		print((char*) temp, 4);
 		if ((cnt % Nk) == 0)
@@ -136,6 +136,10 @@ void aesEncrypt::expandKey()
 			temp[0] ^= roundify(cnt/Nk);
 		}
 		// xor temp
+		unsigned char t[4];
+		for (int n = 0;n<4;n++)
+			t[n] = expandedkey[(cnt-Nk)+4*n];
+		print((char*)t, 4);
 		for (int n = 0; n < 4; n++)
 		{
 			expandedkey[cnt*4+n] = expandedkey[(cnt-Nk)*4+n] ^ temp[n];
@@ -250,7 +254,7 @@ void aesEncrypt::xorRoundKey(char * state, char * key)
 {
 	for (int cnt = 0;cnt < Nb;cnt++)
 	{
-		state[cnt] = state[cnt] ^ key[cnt];
+		state[cnt] ^= key[cnt];
 	}
 }
 
