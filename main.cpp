@@ -10,7 +10,7 @@ using namespace std;
 
 int main()
 {
-	/*try
+	try
 	{
 		// variables
 		encryptJpeg enc;
@@ -48,7 +48,7 @@ int main()
 	catch(encryptJpeg::invalidAction)
 	{
 		cout << "The program encountered an internal error..." << endl;
-	}*/
+	}
 
 	// testing
 	aesEncrypt aes;
@@ -71,7 +71,7 @@ int main()
 	aes.fullkey[15] = 0x3c;
 	char * block;
 	block = new char [16];
-	block[0] = 0x32;
+	/*block[0] = 0x32;
 	block[1] = 0x88;
 	block[2] = 0x31;
 	block[3] = 0xe0;
@@ -86,11 +86,26 @@ int main()
 	block[12] = 0xa8;
 	block[13] = 0x8d;
 	block[14] = 0xa2;
-	block[15] = 0x34;
-	
-	aes.expandKey();
+	block[15] = 0x34;*/
+	block[0] = 0x39;
+	block[1] = 0x02;
+	block[2] = 0xdc;
+	block[3] = 0x19;
+	block[4] = 0x25;
+	block[5] = 0xdc;
+	block[6] = 0x11;
+	block[7] = 0x6a;
+	block[8] = 0x84;
+	block[9] = 0x09;
+	block[10] = 0x85;
+	block[11] = 0x0b;
+	block[12] = 0x1d;
+	block[13] = 0xfb;
+	block[14] = 0x97;
+	block[15] = 0x32;
+	aes.invExpandKey();
 	bool succ;
-	succ = aes.encryptBlock(block);
+	succ = aes.decryptBlock(block);
 	
 	printf("Final result");
 	for (int cnt = 0; cnt < 16; cnt++) {

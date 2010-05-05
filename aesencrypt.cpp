@@ -52,19 +52,29 @@ bool aesEncrypt::encryptBlock(char* block)
 
 bool aesEncrypt::decryptBlock(char* block)
 {
-	xorRoundKey(block, expandedkey + Nr * (Nb/4));
+		print(block);
+	xorRoundKey(block, expandedkey + (Nr * Nb));
 
+		print(block);
 	for(int cnt = Nr-1; cnt > 0;cnt--)
 	{
+		print(block);
 		invShiftRows(block);
+		print(block);
 		invSubBytes(block);
-		xorRoundKey(block, expandedkey + cnt * (Nb/4));
+		print(block);
+		xorRoundKey(block, expandedkey + cnt * Nb);
+		print(block);
 		invMixColumns(block);
+		print(block);
 	}
 
 	invShiftRows(block);
+		print(block);
 	invSubBytes(block);
+		print(block);
 	xorRoundKey(block, expandedkey);
+		print(block);
 	
 	return true;
 }
@@ -179,7 +189,7 @@ void aesEncrypt::invExpandKey()
 	// invert it so it decrypts
 	for (int cnt = 1; cnt < (Nr-1); cnt++)
 	{
-		invMixColumns(expandedkey + cnt * (Nb/4));
+		//invMixColumns(expandedkey + cnt * (Nb/4));
 	}
 }
 
