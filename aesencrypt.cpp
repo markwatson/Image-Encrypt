@@ -145,7 +145,23 @@ void aesEncrypt::expandKey()
 			expandedkey[cnt*4+n] = expandedkey[(cnt-Nk)*4+n] ^ temp[n];
 		}
 	}
-
+	// rearrange
+	unsigned char temp2[Nb];
+	for (int all = 0; all <= Nr;all++)
+	{
+		// copy into temp
+		for (int i = 0; i < Nb; i++)
+		{
+			temp[i] = expandedkey[Nb*all+i];
+		}
+		for (cnt = 0;cnt < Nb/4;cnt++)
+		{
+			for (int i = 0; i < Nb/4;i++)
+			{
+				expandedkey[Nb*all+(cnt+i*4)] = temp[i+cnt*4];
+			}
+		}
+	}
 
 	// test
 	// prints expanded key
@@ -252,12 +268,9 @@ void aesEncrypt::mixColumns(char * state)
 
 void aesEncrypt::xorRoundKey(char * state, char * key)
 {
-	for (int c = 0;c < Nb/4;c++)
+	for (int cnt = 0;cnt < Nb;cnt++)
 	{
-		for (int r = 0; r < Nb/4;r++)
-		{
-			state[4*r+c] ^= key[4*c+r];
-		}
+		state[cnt] ^= key[cnt];
 	}
 }
 
