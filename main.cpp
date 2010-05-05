@@ -8,18 +8,28 @@
 
 using namespace std;
 
-int main()
+int main(int argc, char *argv[])
 {
+	// validate command line arguments
+	if (argc != 4 || (argv[1][1] != 'e' && argv[1][1] != 'd'))
+	{
+		cout << "Invalid command line arguments." << endl
+		     << "Please something like the following:" << endl
+		     << "\t To encrypt: \t image_encrypt -e <input> <output>\n"
+			 << "\t To decrypt: \t image_encrypt -d <input> <output>\n";
+		return 0;
+	}
+
+	// run encryption
 	try
 	{
 		// variables
 		encryptJpeg enc;
-		encryptJpeg dec;
 		string key;
 		
 		// set files
-		enc.setInFile( (char*) "MARBLES.JPG");
-		enc.setOutFile( (char*) "MARBLES.JPG.OUT");
+		enc.setInFile(argv[2]);
+		enc.setOutFile(argv[3]);
 		
 		// set key
 		cout << "Please enter a key: ";
@@ -27,15 +37,7 @@ int main()
 		enc.setPlainKey(key);
 
 		// do the actual encryption
-		enc.process('e');
-
-		// set output
-		dec.setInFile( (char*) "MARBLES.JPG.OUT");
-		dec.setOutFile( (char*) "MARBLES.UNENCED.JPG");
-		dec.setPlainKey(key);
-
-		// do decrypt
-		dec.process('d');
+		enc.process(argv[1][1]);
 	}
 	catch(encryptJpeg::invalidInFile)
 	{
