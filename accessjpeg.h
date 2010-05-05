@@ -24,7 +24,6 @@ public:
 	bool writeOutFile(char*);
 	bool jumpToStart();
 	char * accessBlock();
-	bool saveBlockBack();
 	bool hasMore();
 };
 

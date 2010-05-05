@@ -48,7 +48,6 @@ readInFile	accessjpeg.cpp	/^bool accessJpeg::readInFile(char* in)$/;"	f	class:ac
 rotate_left	aesencrypt.h	/^	void rotate_left(unsigned char * tmp) {$/;"	f	class:aesEncrypt
 rotate_right	aesencrypt.h	/^	void rotate_right(unsigned char * tmp) {$/;"	f	class:aesEncrypt
 roundify	aesencrypt.cpp	/^unsigned char aesEncrypt::roundify(unsigned char index)$/;"	f	class:aesEncrypt
-saveBlockBack	accessjpeg.cpp	/^bool accessJpeg::saveBlockBack()$/;"	f	class:accessJpeg
 sboxify	aesencrypt.cpp	/^unsigned char aesEncrypt::sboxify(unsigned char val)$/;"	f	class:aesEncrypt
 setInFile	encryptjpeg.h	/^	void setInFile(char* in) {in_file = in;}$/;"	f	class:encryptJpeg
 setOutFile	encryptjpeg.h	/^	void setOutFile(char* out) {out_file = out;}$/;"	f	class:encryptJpeg

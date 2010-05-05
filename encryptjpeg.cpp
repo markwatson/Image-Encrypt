@@ -27,13 +27,12 @@ bool encryptJpeg::process(char action)
 	encrypter.setTextKey(key);
 		
 	// do the encryption
-	ptr = file.accessBlock(); // get a block of the image
 	while (file.hasMore())
 	{
+		ptr = file.accessBlock(); // get a block of the image
 		if (action == 'e')
 		{
 			encrypter.encryptBlock(ptr); // run the encryption
-			encrypter.decryptBlock(ptr);
 		}
 		else if (action == 'd')
 		{
@@ -44,8 +43,6 @@ bool encryptJpeg::process(char action)
 			throw invalidAction();
 			return false;
 		}
-		file.saveBlockBack(); // save out the block
-		file.accessBlock();
 	}
 	
 	// write out the file
