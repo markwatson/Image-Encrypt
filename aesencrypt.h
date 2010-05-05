@@ -13,15 +13,14 @@ private:
 	int Nk, Nb, Nr; // lengths.
 	std::string textkey;
 	char* expandedkey;
-public:
 	char* fullkey;
+public:
 	aesEncrypt();
 	~aesEncrypt();
 	bool encryptBlock(char*);
 	bool decryptBlock(char*);
-	void setTextKey(std::string, char);
+	void setTextKey(std::string);
 	void expandKey();
-	void invExpandKey();
 
 	void subBytes(char *);
 	void invSubBytes(char *);
@@ -37,15 +36,6 @@ public:
 	
 	unsigned char ffmul(unsigned char, unsigned char);
 	
-	// testing
-	void print(char* block, int length=16){
-		printf("\n-----\n");
-		for (int cnt = 0; cnt < length; cnt++) {
-			if (cnt % 4 == 0) printf("\n");
-			printf("%3x", (unsigned char) block[cnt]);
-		}
-	}
-		
 	// assumes a word
 	void rotate_left(unsigned char * tmp) {
 		unsigned char trimmings;

@@ -24,62 +24,41 @@ aesEncrypt::~aesEncrypt()
 
 bool aesEncrypt::encryptBlock(char* block)
 {
-	print(block);
 	xorRoundKey(block, expandedkey);
-	print(block);
 	for(int cnt = 1;cnt <= (Nr-1);cnt++)
 	{
-		print(block);
 		subBytes(block);
-		print(block);
 		shiftRows(block);
-		print(block);
 		mixColumns(block);
-		print(block);
 		xorRoundKey(block, expandedkey + (cnt * Nb));
-		print(block);
 	}
-	print(block);
 	subBytes(block);
-	print(block);
 	shiftRows(block);
-	print(block);
 	xorRoundKey(block, expandedkey + (Nr * Nb));
-	print(block);
 	
 	return true; // could error check in future
 }
 
 bool aesEncrypt::decryptBlock(char* block)
 {
-		print(block);
 	xorRoundKey(block, expandedkey + (Nr * Nb));
 
-		print(block);
 	for(int cnt = Nr-1; cnt > 0;cnt--)
 	{
-		print(block);
 		invShiftRows(block);
-		print(block);
 		invSubBytes(block);
-		print(block);
 		xorRoundKey(block, expandedkey + cnt * Nb);
-		print(block);
 		invMixColumns(block);
-		print(block);
 	}
 
 	invShiftRows(block);
-		print(block);
 	invSubBytes(block);
-		print(block);
 	xorRoundKey(block, expandedkey);
-		print(block);
 	
 	return true;
 }
 
-void aesEncrypt::setTextKey(std::string key, char action)
+void aesEncrypt::setTextKey(std::string key)
 {
 	// set the key
 	fullkey = new char [Nk * 4];
@@ -102,10 +81,7 @@ void aesEncrypt::setTextKey(std::string key, char action)
 		pos++; // incrmemnt string position
 	}
 	
-	if (action == 'e')
-		expandKey();
-	else
-		invExpandKey();
+	expandKey();
 }
 
 void aesEncrypt::expandKey()
@@ -135,7 +111,6 @@ void aesEncrypt::expandKey()
 		{
 			temp[n] = expandedkey[(cnt-1)*4+n];
 		}
-		print((char*) temp, 4);
 		if ((cnt % Nk) == 0)
 		{
 			// rotate and then sboxify
@@ -146,10 +121,6 @@ void aesEncrypt::expandKey()
 			temp[0] ^= roundify(cnt/Nk);
 		}
 		// xor temp
-		unsigned char t[4];
-		for (int n = 0;n<4;n++)
-			t[n] = expandedkey[(cnt-Nk)+4*n];
-		print((char*)t, 4);
 		for (int n = 0; n < 4; n++)
 		{
 			expandedkey[cnt*4+n] = expandedkey[(cnt-Nk)*4+n] ^ temp[n];
@@ -171,25 +142,6 @@ void aesEncrypt::expandKey()
 				expandedkey[Nb*all+(cnt+i*4)] = temp[i+cnt*4];
 			}
 		}
-	}
-
-	// test
-	// prints expanded key
-	printf("\n\n###start of key####\n\n");
-	for (cnt = 0;cnt < 11;cnt++)
-		print(expandedkey + cnt*16);
-	printf("\n\n## end of key###\n\n");
-}
-
-void aesEncrypt::invExpandKey()
-{
-	// call expand key
-	expandKey();
-
-	// invert it so it decrypts
-	for (int cnt = 1; cnt < (Nr-1); cnt++)
-	{
-		//invMixColumns(expandedkey + cnt * (Nb/4));
 	}
 }
 

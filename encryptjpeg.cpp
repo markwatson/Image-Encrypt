@@ -20,7 +20,7 @@ bool encryptJpeg::process(char action)
 	}
 	
 	// set the key
-	encrypter.setTextKey(key, action);
+	encrypter.setTextKey(key);
 		
 	// do the encryption
 	ptr = file.accessBlock(); // get a block of the image

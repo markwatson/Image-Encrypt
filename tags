@@ -28,7 +28,6 @@ ffmul	aesencrypt.cpp	/^unsigned char aesEncrypt::ffmul(unsigned char x, unsigned
 file	encryptjpeg.h	/^	accessJpeg file;$/;"	m	class:encryptJpeg
 fullkey	aesencrypt.h	/^	char* fullkey;$/;"	m	class:aesEncrypt
 in_file	encryptjpeg.h	/^	char* in_file;$/;"	m	class:encryptJpeg
-invExpandKey	aesencrypt.cpp	/^void aesEncrypt::invExpandKey()$/;"	f	class:aesEncrypt
 invMixColumns	aesencrypt.cpp	/^void aesEncrypt::invMixColumns(char * state)$/;"	f	class:aesEncrypt
 invShiftRows	aesencrypt.cpp	/^void aesEncrypt::invShiftRows(char * state)$/;"	f	class:aesEncrypt
 invSubBytes	aesencrypt.cpp	/^void aesEncrypt::invSubBytes(char * state)$/;"	f	class:aesEncrypt
@@ -42,7 +41,6 @@ main	main.cpp	/^int main()$/;"	f
 memblock	accessjpeg.h	/^	char * memblock;$/;"	m	class:accessJpeg
 mixColumns	aesencrypt.cpp	/^void aesEncrypt::mixColumns(char * state)$/;"	f	class:aesEncrypt
 out_file	encryptjpeg.h	/^	char* out_file;$/;"	m	class:encryptJpeg
-print	aesencrypt.h	/^	void print(char* block, int length=16){$/;"	f	class:aesEncrypt
 process	encryptjpeg.cpp	/^bool encryptJpeg::process(char action)$/;"	f	class:encryptJpeg
 rcon	aesencrypt.h	/^	unsigned char rcon(unsigned char in) {$/;"	f	class:aesEncrypt
 readInFile	accessjpeg.cpp	/^bool accessJpeg::readInFile(char* in)$/;"	f	class:accessJpeg
@@ -54,7 +52,7 @@ sboxify	aesencrypt.cpp	/^unsigned char aesEncrypt::sboxify(unsigned char val)$/;
 setInFile	encryptjpeg.h	/^	void setInFile(char* in) {in_file = in;}$/;"	f	class:encryptJpeg
 setOutFile	encryptjpeg.h	/^	void setOutFile(char* out) {out_file = out;}$/;"	f	class:encryptJpeg
 setPlainKey	encryptjpeg.h	/^	void setPlainKey(std::string in_key) {key = in_key;}$/;"	f	class:encryptJpeg
-setTextKey	aesencrypt.cpp	/^void aesEncrypt::setTextKey(std::string key, char action)$/;"	f	class:aesEncrypt
+setTextKey	aesencrypt.cpp	/^void aesEncrypt::setTextKey(std::string key)$/;"	f	class:aesEncrypt
 shiftRows	aesencrypt.cpp	/^void aesEncrypt::shiftRows(char * state)$/;"	f	class:aesEncrypt
 singleblock	accessjpeg.h	/^	char * singleblock; \/\/ single block of img to pass back$/;"	m	class:accessJpeg
 size	accessjpeg.h	/^	unsigned long int size;$/;"	m	class:accessJpeg
