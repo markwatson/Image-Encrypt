@@ -28,20 +28,25 @@ bool encryptJpeg::process(char action)
 		
 	// do the encryption
 	ptr = file.accessBlock(); // get a block of the image
-	if (action == 'e')
+	while (file.hasMore())
 	{
-		encrypter.encryptBlock(ptr); // run the encryption
+		if (action == 'e')
+		{
+			encrypter.encryptBlock(ptr); // run the encryption
+			encrypter.decryptBlock(ptr);
+		}
+		else if (action == 'd')
+		{
+			encrypter.decryptBlock(ptr);
+		}
+		else
+		{
+			throw invalidAction();
+			return false;
+		}
+		file.saveBlockBack(); // save out the block
+		file.accessBlock();
 	}
-	else if (action == 'd')
-	{
-		encrypter.decryptBlock(ptr);
-	}
-	else
-	{
-		throw invalidAction();
-		return false;
-	}
-	file.saveBlockBack(); // save out the block
 	
 	// write out the file
 	out_success = file.writeOutFile(out_file);

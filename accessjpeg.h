@@ -25,6 +25,7 @@ public:
 	bool jumpToStart();
 	char * accessBlock();
 	bool saveBlockBack();
+	bool hasMore();
 };
 
 #endif // ACCESSJPEG_H

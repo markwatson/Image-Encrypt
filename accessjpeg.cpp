@@ -76,12 +76,20 @@ bool accessJpeg::jumpToStart()
 	return false;
 }
 
+bool accessJpeg::hasMore()
+{
+	return cursor < size;
+}
+
 // access a block from the memory
 char * accessJpeg::accessBlock()
 {
 	for(int cnt = 0;cnt < BLOCK_SIZE;cnt++)
 	{
-		singleblock[cnt] = memblock[cursor + cnt];
+		if (cursor+cnt < size)
+			singleblock[cnt] = memblock[cursor + cnt];
+		else
+			singleblock[cnt] = 0x00;
 		cursor++;
 	}
 
