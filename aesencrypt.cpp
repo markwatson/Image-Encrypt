@@ -252,9 +252,12 @@ void aesEncrypt::mixColumns(char * state)
 
 void aesEncrypt::xorRoundKey(char * state, char * key)
 {
-	for (int cnt = 0;cnt < Nb;cnt++)
+	for (int c = 0;c < Nb/4;c++)
 	{
-		state[cnt] ^= key[cnt];
+		for (int r = 0; r < Nb/4;r++)
+		{
+			state[4*r+c] ^= key[4*c+r];
+		}
 	}
 }
 
