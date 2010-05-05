@@ -136,13 +136,13 @@ void aesEncrypt::expandKey()
 		// copy into temp
 		for (int i = 0; i < Nb; i++)
 		{
-			temp[i] = expandedkey[Nb*all+i];
+			temp2[i] = expandedkey[Nb*all+i];
 		}
 		for (cnt = 0;cnt < Nb/4;cnt++)
 		{
 			for (int i = 0; i < Nb/4;i++)
 			{
-				expandedkey[Nb*all+(cnt+i*4)] = temp[i+cnt*4];
+				expandedkey[Nb*all+(cnt+i*4)] = temp2[i+cnt*4];
 			}
 		}
 	}
