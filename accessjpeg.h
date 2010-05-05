@@ -1,3 +1,7 @@
+// Mark Watson
+// CS 306
+// Semester Project
+
 #ifndef ACCESSJPEG_H
 #define ACCESSJPEG_H
 

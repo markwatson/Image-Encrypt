@@ -1,3 +1,7 @@
+// Mark Watson
+// CS 306
+// Semester Project
+
 #include <iostream>
 #include <fstream>
 #include <string>

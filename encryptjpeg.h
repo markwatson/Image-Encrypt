@@ -1,3 +1,7 @@
+// Mark Watson
+// CS306
+// Semester Project
+
 #ifndef ENCRYPTJPEG_H
 #define ENCRYPTJPEG_H
 

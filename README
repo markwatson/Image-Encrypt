@@ -1,2 +1,10 @@
 This program encrypts images.
 
+To build just type make. It's stored as a single binary, so just copy
+to where you want.
+
+To use:
+To encrypt: 	 image_encrypt -e <input> <output>
+To decrypt: 	 image_encrypt -d <input> <output>
+
+

@@ -1,4 +1,7 @@
-#include "stdio.h"
+// Mark Watson
+// CS 306
+// Semester Project
+
 #include <string>
 #include <stdexcept>
 

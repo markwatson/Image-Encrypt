@@ -4,11 +4,11 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-ACCESSJPEG_H	accessjpeg.h	2;"	d
-AESENCRYPT_H	aesencrypt.h	2;"	d
-BLOCK_SIZE	accessjpeg.h	4;"	d
-BLOCK_SIZE	aesencrypt.h	4;"	d
-ENCRYPTJPEG_H	encryptjpeg.h	2;"	d
+ACCESSJPEG_H	accessjpeg.h	6;"	d
+AESENCRYPT_H	aesencrypt.h	6;"	d
+BLOCK_SIZE	accessjpeg.h	8;"	d
+BLOCK_SIZE	aesencrypt.h	8;"	d
+ENCRYPTJPEG_H	encryptjpeg.h	6;"	d
 Nb	aesencrypt.h	/^	int Nk, Nb, Nr; \/\/ lengths.$/;"	m	class:aesEncrypt
 Nk	aesencrypt.h	/^	int Nk, Nb, Nr; \/\/ lengths.$/;"	m	class:aesEncrypt
 Nr	aesencrypt.h	/^	int Nk, Nb, Nr; \/\/ lengths.$/;"	m	class:aesEncrypt
@@ -37,7 +37,7 @@ invalidOutFile	encryptjpeg.h	/^	class invalidOutFile {};$/;"	c	class:encryptJpeg
 invsboxify	aesencrypt.cpp	/^unsigned char aesEncrypt::invsboxify(unsigned char val)$/;"	f	class:aesEncrypt
 jumpToStart	accessjpeg.cpp	/^bool accessJpeg::jumpToStart()$/;"	f	class:accessJpeg
 key	encryptjpeg.h	/^	std::string key;$/;"	m	class:encryptJpeg
-main	main.cpp	/^int main()$/;"	f
+main	main.cpp	/^int main(int argc, char *argv[])$/;"	f
 memblock	accessjpeg.h	/^	char * memblock;$/;"	m	class:accessJpeg
 mixColumns	aesencrypt.cpp	/^void aesEncrypt::mixColumns(char * state)$/;"	f	class:aesEncrypt
 out_file	encryptjpeg.h	/^	char* out_file;$/;"	m	class:encryptJpeg

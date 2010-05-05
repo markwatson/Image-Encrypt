@@ -1,3 +1,7 @@
+// Make Watson
+// CS 306
+// Semester Project
+
 #ifndef AESENCRYPT_H
 #define AESENCRYPT_H
 
