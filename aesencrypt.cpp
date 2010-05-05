@@ -24,18 +24,28 @@ aesEncrypt::~aesEncrypt()
 
 bool aesEncrypt::encryptBlock(char* block)
 {
+	print(block);
 	xorRoundKey(block, expandedkey);
-
-	for(int cnt = 0;cnt < Nr;cnt++)
+	print(block);
+	for(int cnt = 1;cnt <= (Nr-1);cnt++)
 	{
+		print(block);
 		subBytes(block);
+		print(block);
 		shiftRows(block);
+		print(block);
 		mixColumns(block);
+		print(block);
 		xorRoundKey(block, expandedkey + (cnt * (Nb/4)));
+		print(block);
 	}
+	print(block);
 	subBytes(block);
+	print(block);
 	shiftRows(block);
+	print(block);
 	xorRoundKey(block, expandedkey + (Nr * (Nb/4)));
+	print(block);
 	
 	return true; // could error check in future
 }
@@ -102,10 +112,10 @@ void aesEncrypt::expandKey()
 	// set first key
 	for(cnt = 0;cnt < Nk;cnt++)
 	{
-		expandedkey[cnt*4] = fullkey[cnt*4];
-		expandedkey[cnt*4+1] = fullkey[cnt*4+1];
-		expandedkey[cnt*4+2] = fullkey[cnt*4+2];
-		expandedkey[cnt*4+3] = fullkey[cnt*4+3];
+		for (int n = 0; n < 4; n++)
+		{
+			expandedkey[cnt*4+n] = fullkey[cnt*4+n];
+		}
 	}
 	// continue where we left off with other keys
 	for (cnt = Nk;cnt < limit;cnt++)
@@ -115,20 +125,30 @@ void aesEncrypt::expandKey()
 		{
 			temp[n] = expandedkey[(cnt-1) * 4 + n];
 		}
-		if (cnt % Nk == 0)
+		print((char*) temp, 4);
+		if ((cnt % Nk) == 0)
 		{
 			// rotate and then sboxify
 			rotate_left(temp);
-			sboxify(temp);
+			for (int n = 0;n<4;n++)
+				temp[n] = sboxify(temp[n]);
 			// round
 			temp[0] ^= roundify(cnt/Nk);
 		}
-		// xor temp back in
-		expandedkey[cnt*4] = expandedkey[(cnt-Nk)*4] ^ temp[0];
-		expandedkey[cnt*4+1] = expandedkey[(cnt-Nk)*4+1] ^ temp[1];
-		expandedkey[cnt*4+2] = expandedkey[(cnt-Nk)*4+2] ^ temp[2];
-		expandedkey[cnt*4+3] = expandedkey[(cnt-Nk)*4+3] ^ temp[3];
+		// xor temp
+		for (int n = 0; n < 4; n++)
+		{
+			expandedkey[cnt*4+n] = expandedkey[(cnt-Nk)*4+n] ^ temp[n];
+		}
 	}
+
+
+	// test
+	// prints expanded key
+	printf("\n\n###start of key####\n\n");
+	for (cnt = 0;cnt < 11;cnt++)
+		print(expandedkey + cnt*16);
+	printf("\n\n## end of key###\n\n");
 }
 
 void aesEncrypt::invExpandKey()
@@ -257,8 +277,9 @@ unsigned char aesEncrypt::ffmul(unsigned char x, unsigned char y) {
 	return (unsigned char) p.to_ulong();
 }
 
-unsigned char aesEncrypt::sboxify(int val)
+unsigned char aesEncrypt::sboxify(unsigned char val)
 {
+	//printf("\n sbox: %i \n", val);
 	unsigned char sbox[256] = {
 	//0     1    2      3     4    5     6     7      8    9     A      B    C     D     E     F
 	0x63, 0x7c, 0x77, 0x7b, 0xf2, 0x6b, 0x6f, 0xc5, 0x30, 0x01, 0x67, 0x2b, 0xfe, 0xd7, 0xab, 0x76, //0
@@ -281,7 +302,7 @@ unsigned char aesEncrypt::sboxify(int val)
 	return sbox[val];
 }
 
-unsigned char aesEncrypt::invsboxify(int val)
+unsigned char aesEncrypt::invsboxify(unsigned char val)
 {
 	unsigned char sbox[256] = {
 	//0     1    2      3     4    5     6     7      8    9     A      B    C     D     E     F
@@ -305,7 +326,7 @@ unsigned char aesEncrypt::invsboxify(int val)
 	return sbox[val];
 }
 
-unsigned char aesEncrypt::roundify(int index)
+unsigned char aesEncrypt::roundify(unsigned char index)
 {
 	unsigned char round[255] = {  
 	0x8d, 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1b, 0x36, 0x6c, 0xd8, 0xab, 0x4d, 0x9a,   

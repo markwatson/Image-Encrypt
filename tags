@@ -35,21 +35,22 @@ invSubBytes	aesencrypt.cpp	/^void aesEncrypt::invSubBytes(char * state)$/;"	f	cl
 invalidAction	encryptjpeg.h	/^	class invalidAction {};$/;"	c	class:encryptJpeg
 invalidInFile	encryptjpeg.h	/^	class invalidInFile {};$/;"	c	class:encryptJpeg
 invalidOutFile	encryptjpeg.h	/^	class invalidOutFile {};$/;"	c	class:encryptJpeg
-invsboxify	aesencrypt.cpp	/^unsigned char aesEncrypt::invsboxify(int val)$/;"	f	class:aesEncrypt
+invsboxify	aesencrypt.cpp	/^unsigned char aesEncrypt::invsboxify(unsigned char val)$/;"	f	class:aesEncrypt
 jumpToStart	accessjpeg.cpp	/^bool accessJpeg::jumpToStart()$/;"	f	class:accessJpeg
 key	encryptjpeg.h	/^	std::string key;$/;"	m	class:encryptJpeg
 main	main.cpp	/^int main()$/;"	f
 memblock	accessjpeg.h	/^	char * memblock;$/;"	m	class:accessJpeg
 mixColumns	aesencrypt.cpp	/^void aesEncrypt::mixColumns(char * state)$/;"	f	class:aesEncrypt
 out_file	encryptjpeg.h	/^	char* out_file;$/;"	m	class:encryptJpeg
+print	aesencrypt.h	/^	void print(char* block, int length=16){$/;"	f	class:aesEncrypt
 process	encryptjpeg.cpp	/^bool encryptJpeg::process(char action)$/;"	f	class:encryptJpeg
+rcon	aesencrypt.h	/^	unsigned char rcon(unsigned char in) {$/;"	f	class:aesEncrypt
 readInFile	accessjpeg.cpp	/^bool accessJpeg::readInFile(char* in)$/;"	f	class:accessJpeg
 rotate_left	aesencrypt.h	/^	void rotate_left(unsigned char * tmp) {$/;"	f	class:aesEncrypt
 rotate_right	aesencrypt.h	/^	void rotate_right(unsigned char * tmp) {$/;"	f	class:aesEncrypt
-roundify	aesencrypt.cpp	/^unsigned char aesEncrypt::roundify(int index)$/;"	f	class:aesEncrypt
+roundify	aesencrypt.cpp	/^unsigned char aesEncrypt::roundify(unsigned char index)$/;"	f	class:aesEncrypt
 saveBlockBack	accessjpeg.cpp	/^bool accessJpeg::saveBlockBack()$/;"	f	class:accessJpeg
-sboxify	aesencrypt.cpp	/^unsigned char aesEncrypt::sboxify(int val)$/;"	f	class:aesEncrypt
-sboxify	aesencrypt.h	/^	void sboxify(unsigned char * tmp) {$/;"	f	class:aesEncrypt
+sboxify	aesencrypt.cpp	/^unsigned char aesEncrypt::sboxify(unsigned char val)$/;"	f	class:aesEncrypt
 setInFile	encryptjpeg.h	/^	void setInFile(char* in) {in_file = in;}$/;"	f	class:encryptJpeg
 setOutFile	encryptjpeg.h	/^	void setOutFile(char* out) {out_file = out;}$/;"	f	class:encryptJpeg
 setPlainKey	encryptjpeg.h	/^	void setPlainKey(std::string in_key) {key = in_key;}$/;"	f	class:encryptJpeg
