@@ -10,7 +10,7 @@
 // constructor
 accessJpeg::accessJpeg()
 {
-	singleblock = new char [BLOCK_SIZE];
+	// nothing here yet
 }
 
 // destructor
@@ -18,7 +18,6 @@ accessJpeg::~accessJpeg()
 {
 	// free the memory
 	delete[] memblock;
-	delete[] singleblock;
 }
 
 // setfile also reads the file into memory.

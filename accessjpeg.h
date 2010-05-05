@@ -15,7 +15,6 @@ private:
 	unsigned long int size;
 	unsigned long int cursor;
 public:
-	char * singleblock; // single block of img to pass back
 	char * memblock;
 	
 	accessJpeg();
