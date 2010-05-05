@@ -36,7 +36,7 @@ bool aesEncrypt::encryptBlock(char* block)
 		print(block);
 		mixColumns(block);
 		print(block);
-		xorRoundKey(block, expandedkey + (cnt * (Nb/4)));
+		xorRoundKey(block, expandedkey + (cnt * Nb));
 		print(block);
 	}
 	print(block);
@@ -44,7 +44,7 @@ bool aesEncrypt::encryptBlock(char* block)
 	print(block);
 	shiftRows(block);
 	print(block);
-	xorRoundKey(block, expandedkey + (Nr * (Nb/4)));
+	xorRoundKey(block, expandedkey + (Nr * Nb));
 	print(block);
 	
 	return true; // could error check in future
