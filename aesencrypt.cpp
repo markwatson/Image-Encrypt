@@ -74,7 +74,7 @@ void aesEncrypt::setTextKey(std::string key)
 		{
 			fullkey[cnt] = key.at(pos);
 		}
-		catch (std::out_of_range& e)
+		catch (std::out_of_range&)
 		{
 			// recover by repeating key
 			pos = pos - (key.length()+1);
@@ -130,7 +130,8 @@ void aesEncrypt::expandKey()
 		}
 	}
 	// rearrange
-	unsigned char temp2[Nb];
+	unsigned char* temp2;
+	temp2 = new unsigned char [Nb];
 	for (int all = 0; all <= Nr;all++)
 	{
 		// copy into temp
@@ -146,6 +147,7 @@ void aesEncrypt::expandKey()
 			}
 		}
 	}
+	delete[] temp2; // cleanup
 }
 
 void aesEncrypt::subBytes(char * state)
